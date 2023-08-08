@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "noEmit": true,
+    "jsx": "preserve",
+    "noImplicitAny": true,       // 不允许隐式的 any 类型
+    "removeComments": true,      // 删除注释
+    "preserveConstEnums": true,  // 保留 const 和 enum 声明
+    "sourceMap": true ,           // 生成目标文件的sourceMap文件
+    "noImplicitReturns": true,
+    "outDir": "build",
+    "noUnusedLocals": true,
+    "baseUrl": "."
+  },
+
+  "exclude": ["node_modules", "build"],
+  "includes": ["typed-css.d.ts", "src/*", "src/**/*", "src/pages/*"],
+  "type":"module"
+}

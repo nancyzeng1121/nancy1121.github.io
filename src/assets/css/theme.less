@@ -1,0 +1,20 @@
+.theme(
+  @primary-color: #2d8cf0;
+  @text-color: red;
+  @background-color: #fff;
+) {
+  /* CSS变量 */
+  body {
+    --color-title: #1c2438;
+    --color-border: #dddee1;
+    --color-bg: #f1f1f1;
+  }
+  .wrapper {
+    color: @text-color;
+    background-color: @background-color;
+    border: 1px solid var(--color-border);
+  }
+  .button-primary {
+    background-color: @primary-color;
+  }
+}

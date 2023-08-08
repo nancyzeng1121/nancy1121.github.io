@@ -1,0 +1,69 @@
+.banner {
+  min-height: 155px;
+  height: 9.375vw;
+  position: relative;
+  overflow: hidden;
+  --percentage: 0.5;
+
+  .view,
+  .tree {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.2s all ease-in;
+  }
+
+  .view {
+    transform: translatex(calc(var(--percentage) * 100px));
+  }
+  .tree {
+    transform: translatex(calc(var(--percentage) * 150px - 25px));
+    filter: blur(3px);
+  }
+
+  img,
+  video {
+    position: absolute;
+    height: 100%;
+  }
+  .morning{
+    //z-index: 1;
+  }
+  .evening {
+    transition: 0.2s all ease-in;
+    z-index: 20;
+    opacity: calc((0.5 - var(--percentage)) / 0.5);
+  }
+  .afternoon {
+    transition: 0.2s all ease-in;
+    z-index: 10;
+    opacity: calc(1 - (var(--percentage) - 0.5) / 0.5);
+  }
+
+  &.moving {
+    .afternoon,
+    .evening,
+    .ball,
+    .view,
+    .tree {
+      transition: none;
+    }
+  }
+
+  .ball {
+    transition: 0.2s all ease-in;
+    z-index: 10;
+    opacity: calc(1.5 - (var(--percentage) - 0.5) / 0.5);
+    transform: translate(calc(100px * var(--percentage)), 22px) rotate(calc(10deg * var(--percentage) + 5deg));
+  }
+
+  .window-cover {
+    z-index: 20;
+    opacity: calc(var(--percentage) * (-2));
+  }
+}

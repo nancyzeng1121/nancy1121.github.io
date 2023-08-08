@@ -1,0 +1,38 @@
+.menuItem{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 58px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px;
+  padding-left: 36px;
+  padding-right: 16px;
+  &:hover{
+    background-color: rgba(0, 0, 0, .1);
+  }
+  &.menuItemChild{
+    padding-left: 48px;
+  }
+  &.border{
+    border-bottom: 1px solid rgb(224, 224, 224);
+  }
+  .menu{
+    display: flex;
+    align-items: center;
+  }
+  .link{
+    display: flex;
+    align-items: center;
+  }
+  .menuName{
+    margin-left: 36px;
+  }
+  .icon{
+    font-size: 24px;
+    color: rgb(117, 117,117);
+    &.faAngleUp{
+      color: rgba(0, 0, 0, 0.87);
+      cursor: pointer;
+    }
+  }
+}
