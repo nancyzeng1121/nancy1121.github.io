@@ -1,1 +1,1 @@
-export const BasePath: string = "/web-html-less"
+export const BasePath: string = ""
