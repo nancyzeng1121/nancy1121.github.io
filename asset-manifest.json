@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.css",
+    "main.js": "/static/js/main.b64f326f.js",
+    "static/media/bilibili-winter-view-2.jpg": "/static/media/bilibili-winter-view-2.e9b80fc07009fce7681c.jpg",
+    "static/media/bilibili-winter-view-1.jpg": "/static/media/bilibili-winter-view-1.e55ef6e5615ab76bd160.jpg",
+    "static/media/bg.jpg": "/static/media/bg.b1e3a835627199c04f7e.jpg",
+    "static/media/bilibili-winter-view-3.webm": "/static/media/bilibili-winter-view-3.b730b543e919ead74064.webm",
+    "static/media/aside-bg.jpeg": "/static/media/aside-bg.06f8843d7160ee292df7.jpeg",
+    "static/media/bilibili-winter-tree-1.png": "/static/media/bilibili-winter-tree-1.fca2d3ef040f1e553f68.png",
+    "static/media/bilibili-winter-tree-2.png": "/static/media/bilibili-winter-tree-2.512ba179067b9b31e541.png",
+    "static/media/bilibili-winter-tree-3.png": "/static/media/bilibili-winter-tree-3.680c98bed646e3a3b863.png",
+    "static/media/headerAvatar.jpeg": "/static/media/headerAvatar.ae80a5a8c5a085123c05.jpeg",
+    "static/media/dbssjc.png": "/static/media/dbssjc.864f4b140f1523489907.png",
+    "static/media/bilibili-winter-view-3-snow.png": "/static/media/bilibili-winter-view-3-snow.5a41d3dc457682f8146e.png",
+    "index.html": "/index.html",
+    "main.css.map": "/static/css/main.css.map",
+    "main.b64f326f.js.map": "/static/js/main.b64f326f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.css",
+    "static/js/main.b64f326f.js"
+  ]
+}
