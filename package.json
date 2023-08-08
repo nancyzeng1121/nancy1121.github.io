@@ -2,7 +2,7 @@
   "name": "my-react-app-typescript",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://watermelon555.github.io",
+  "homepage": "http://simple.github.io",
   "dependencies": {
     "-": "^0.0.1",
     "@babel/eslint-parser": "^7.17.0",
