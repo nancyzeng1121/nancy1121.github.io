@@ -4,4 +4,21 @@
 //@import "~font-awesome/less/font-awesome.less";
 //@import '~antd/lib/style/themes/default.less';
 
-
+:global{
+  .md-editor{
+    height: 100%;
+  }
+  .footer-container{
+    width: 100%;
+    position: fixed;
+    bottom: 20px;
+    display: flex;
+    justify-content: center;
+    .footer-wrap{
+      display: flex;
+      width: 12%;
+      justify-content: space-around;
+      z-index: 999999999999;
+    }
+  }
+}

@@ -1,16 +1,13 @@
 import React from "react"
 import styles from "./index.less"
 import { Article } from "../../components/Article"
-import { Banner } from "../../components/Banner"
 import { Footer } from "../../components/Footer"
 
 const Home = (props: any): React.ReactElement => {
     const { theme } = props
     return (
         <>
-            <Banner />
-
-            <div className={styles.container}>
+          <div className={styles.container}>
                 <section>
                     <div className={styles.commended}>
                         <div className={styles.commendedArticle}>

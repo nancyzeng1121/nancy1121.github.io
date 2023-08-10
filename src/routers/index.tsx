@@ -8,6 +8,7 @@ import Flex from "../pages/flex"
 import { Cybr } from "../components/Cybr"
 import { WebGl } from "../pages/webgl"
 import BoxWrap from "../pages/BoxWrap"
+import BlogComponent from "../pages/blog";
 
 export const Router = (props: any) => {
     return (
@@ -19,6 +20,8 @@ export const Router = (props: any) => {
             <Route path={`${BasePath}/cybr`} element={<Cybr />} />
             <Route path={`${BasePath}/webgl`} element={<WebGl />} />
             <Route path={`${BasePath}/boxWrap`} element={<BoxWrap />} />
+            <Route path={`${BasePath}/boxWrap`} element={<BoxWrap />} />
+            <Route path={`${BasePath}/blog`} element={<BlogComponent />} />
         </Routes>
     )
 }

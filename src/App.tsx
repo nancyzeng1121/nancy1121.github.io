@@ -2,17 +2,18 @@ import React, { useEffect, useState } from "react"
 import { Router } from "./routers"
 import { Avatar } from "./components/Avatar"
 import { Menu } from "./components/Menu"
-import { BrowserRouter } from "react-router-dom"
+import {BrowserRouter, Link} from "react-router-dom"
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"
 import { ThemeItem } from "./components/ThemeItem"
 import styles from "./App.less"
 import { ColorItemProps, MenuProps } from "./types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import {BasePath} from "./types/config";
 
 const App = () => {
     const [isShowAside, setIsShowAside] = useState<boolean>(false)
     const [menuItem, setMenuItem] = useState<MenuProps[]>([])
-    const [theme, setTheme] = useState<string>("pink")
+    const [theme, setTheme] = useState<string>("green")
     const [colorItem, setColorItem] = useState<ColorItemProps[]>([])
     useEffect(() => {
         const item: MenuProps[] = [
@@ -167,6 +168,8 @@ const App = () => {
         setIsShowAside(value)
     }
 
+
+
     return (
         <div className={styles.App}>
             <BrowserRouter>
@@ -194,7 +197,8 @@ const App = () => {
                                     <FontAwesomeIcon icon={solid("bars")} />
                                 </div>
                                 <div>
-                                    <FontAwesomeIcon icon={solid("search")} />
+                                  <Link to={`${BasePath}/blog`} className={styles.link}>博客</Link>
+                                  <Link to={`${BasePath}/blog`} className={styles.link}>关于我</Link>
                                 </div>
                             </div>
                         </div>

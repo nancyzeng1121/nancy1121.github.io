@@ -1,6 +1,8 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import "antd/dist/antd.min.css"
+import 'md-editor-rt/lib/style.css';
+import 'md-editor-rt/lib/preview.css';
 import "./index.less"
 import App from "./App"
 
