@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react"
 import AddBlog from "./AddBlog";
 
 const BlogComponent = () => {
