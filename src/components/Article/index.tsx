@@ -1,12 +1,13 @@
 import React from "react"
 import styles from "./index.less"
 import { Avatar } from "../Avatar"
-export const Article = () => {
+export const Article = (props: any) => {
+  const {data} = props
     return (
         <div className={styles.articleWrap}>
             <div className={styles.articleBg}>
                 <div className={styles.fuzzy}>
-                    <div className={styles.title}>Hello World</div>
+                    <div className={styles.title}>{data?.desc}</div>
                     <div className={styles.date}>2021/1/14</div>
                 </div>
             </div>

@@ -94,6 +94,7 @@ aside{
 
 .content{
   height: 100%;
+  overflow: hidden;
   .mask{
     position: fixed;
     top: 0;
@@ -106,13 +107,16 @@ aside{
 }
 .nav {
   width: 100%;
-  margin-top: -70px;
-  margin-bottom: 100px;
+  margin-top: -120px;
+  height:100%;
+  //margin-bottom: 100px;
   //min-height: calc(100vh - 144px - 220px - 9.375vw - 100px);
   //position: relative;
   nav{
     position: relative;
-    height: calc(100vh - 350px)
+    height: calc(100% - 240px);
+    overflow: hidden;
+
   }
 }
 
