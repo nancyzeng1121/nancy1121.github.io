@@ -15,9 +15,13 @@ export const Article = (props: any) => {
     dispatch({type: SET_BLOG, value: data})
 
   }
+
+  const style = {
+    backgroundImage: data && data.img ? "url("+ data.img[0].thumbUrl + ")" : ''
+  }
     return (
         <div className={styles.articleWrap}>
-            <div className={styles.articleBg} onClick={() => handleClick()}>
+            <div className={styles.articleBg} onClick={() => handleClick()} style={style}>
                 <div className={styles.fuzzy}>
                     <div className={styles.title}>{data?.name}</div>
                     <div className={styles.date}>{moment(data?.time).format("YYYY/MM/DD")}</div>

@@ -10,6 +10,7 @@ import { WebGl } from "../pages/webgl"
 import BoxWrap from "../pages/BoxWrap"
 import BlogComponent from "../pages/blog";
 import BlogContent from "../pages/blog/BlogContent";
+import Personal from "../pages/personal";
 
 export const Router = (props: any) => {
     return (
@@ -24,6 +25,7 @@ export const Router = (props: any) => {
             <Route path={`${BasePath}/boxWrap`} element={<BoxWrap />} />
             <Route path={`${BasePath}/blog`} element={<BlogComponent />} />
             <Route path={`${BasePath}/blogContent`} element={<BlogContent />} />
+            <Route path={`${BasePath}/personal`} element={<Personal />} />
         </Routes>
     )
 }

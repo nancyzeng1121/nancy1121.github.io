@@ -92,8 +92,7 @@ const App = () => {
                                     <FontAwesomeIcon icon={solid("bars")} />
                                 </div>
                                 <div>
-                                  <Link to={`${BasePath}/blog`} className={styles.link}>博客</Link>
-                                  <Link to={`${BasePath}/blog`} className={styles.link}>关于我</Link>
+                                  <Link to={`${BasePath}/blog`} className={styles.link}>博客编辑</Link>
                                 </div>
                             </div>
                         </div>

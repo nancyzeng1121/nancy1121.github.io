@@ -1,6 +1,7 @@
 import React, {useEffect} from "react"
-import {Form, Input, Modal} from "antd";
+import {Button, Form, Input, Modal, Upload} from "antd";
 import moment from "moment";
+import {UploadOutlined} from "@ant-design/icons";
 // import {saveAs} from "file-saver";
 
 
@@ -20,7 +21,8 @@ const RequireInfo = (props: any) => {
       const jsonData = {
         name: `${formV.name}`,
         time: moment().format("YYYY-MM-DD HH:mm:ss"),
-        html: text
+        html: text,
+        img: formV.upload
       };
 
       const jsonString = JSON.stringify(jsonData, null, 2);
@@ -34,10 +36,16 @@ const RequireInfo = (props: any) => {
     }catch (e){
       return e
     }
-
-
-
   }
+
+  const normFile = (e: any) => {
+    console.log('Upload event:', e);
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e?.fileList;
+  };
+
   return <Modal title="填写必要信息" open={isModalOpen} onOk={() => handleSubmit()} onCancel={handleCancel}>
     <Form
       form={form}
@@ -55,6 +63,23 @@ const RequireInfo = (props: any) => {
         ]}
       >
         <Input />
+      </Form.Item>
+      <Form.Item
+        name="upload"
+        label="上传图片"
+        valuePropName="fileList"
+        getValueFromEvent={normFile}
+        extra=""
+        rules={[
+          {
+            required: true,
+            message: "请填写标题",
+          },
+        ]}
+      >
+        <Upload name="logo" listType="picture" maxCount={1} accept={".jpg,.png,.jpeg"}>
+          <Button icon={<UploadOutlined />}>上传</Button>
+        </Upload>
       </Form.Item>
     </Form>
   </Modal>
