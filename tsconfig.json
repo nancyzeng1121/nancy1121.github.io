@@ -29,6 +29,6 @@
     "baseUrl": "."
   },
   "exclude": ["node_modules", "build"],
-  "includes": ["typed-css.d.ts", "src/*", "src/**/*", "src/pages/*"],
+  "includes": ["typed-css.d.ts", "src/*", "src/**/*", "src/pages/*", "type-js.d.ts"],
   "type":"module"
 }

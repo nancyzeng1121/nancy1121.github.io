@@ -1,6 +1,6 @@
 const path = require("path")
 const CracoLessPlugin = require("craco-less")
-const CracoAntDesign = require("craco-antd")
+// const CracoAntDesign = require("craco-antd")
 const NpmImportPlugin = require("less-plugin-npm-import")
 
 const BUILD_PATH = path.resolve(__dirname, "./build")

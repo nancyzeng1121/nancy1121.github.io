@@ -1,8 +1,8 @@
 
 
-const MarkdownFile =  {
-  hello: "/article/hello.md",
- "test-001": "/article/test-001.md"
+const MarkdownFile: any =  {
+  "hello": "/article/hello.json",
+ "南海诸岛地图制作": "/article/南海诸岛地图制作.json",
 }
 
 export default MarkdownFile;

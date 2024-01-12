@@ -1,6 +1,8 @@
 import React, {useEffect} from "react"
 import {Form, Input, Modal} from "antd";
+import moment from "moment";
 // import {saveAs} from "file-saver";
+
 
 const RequireInfo = (props: any) => {
   const {isModalOpen, handleCancel, text} = props
@@ -8,31 +10,27 @@ const RequireInfo = (props: any) => {
 
 
   useEffect(() => {
-    console.log(props, "=====ll====")
   }, [isModalOpen])
 
   const handleSubmit = async () => {
     try{
       const formV = await form.validateFields()
+      // const md = new MarkdownIt();
+      // const html = md.render(text);
+      const jsonData = {
+        name: `${formV.name}`,
+        time: moment().format("YYYY-MM-DD HH:mm:ss"),
+        html: text
+      };
 
-      // dada 表示要转换的字符串数据，type 表示要转换的数据格式
-      const blob = new Blob([text], {
-        type: "text/markdown"
-      })
-      // 根据 blob生成 url链接
-      const objectURL = URL.createObjectURL(blob)
+      const jsonString = JSON.stringify(jsonData, null, 2);
 
-      // 创建一个 a 标签Tag
-      const aTag = document.createElement("a")
-      // 设置文件的下载地址
-      aTag.href = objectURL
-      // 设置保存后的文件名称
-      aTag.download = `${formV.name}.md`
-      // 给 a 标签添加点击事件
-      aTag.click()
-      handleCancel && handleCancel()
-      URL.revokeObjectURL(objectURL)
+      const blob = new Blob([jsonString], { type: "application/json" });
 
+      const downloadLink = document.createElement("a");
+      downloadLink.href = URL.createObjectURL(blob);
+      downloadLink.download = `${formV.name}.json`;
+      downloadLink.click();
     }catch (e){
       return e
     }

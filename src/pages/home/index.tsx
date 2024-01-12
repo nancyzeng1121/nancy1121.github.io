@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react"
 import styles from "./index.less"
 import {Article} from "../../components/Article"
-// import {Footer} from "../../components/Footer"
+import axios from "axios";
 import MarkdownFile from "../../components/MarkdownFile";
 
 const Home = (props: any): React.ReactElement => {
@@ -21,27 +21,18 @@ const Home = (props: any): React.ReactElement => {
       .then((txt) => console.log(txt));
   }, []); */
 
+  console.log(window.origin, "===ll===")
    const getFile = async () => {
-    const markFile: any = MarkdownFile
-    const list = Object.keys(markFile).map(v => {
-      return v
-    })
-    let arr: any = []
-    if(list.length > 0) {
-      list.map(async (v) => {
-       const txt: any = await  fetch(markFile[`${v}`]).then(resp => resp.text())
-        const params: any = {
-          html: txt,
-          desc:txt.replace(/<[^>]*>|/g,""),
-          title: v
-        }
-        arr = [...arr, params]
-        setListHtml(arr)
-      })
-    }
-
+    const arr: any = []
+     for (const v of Object.keys(MarkdownFile)) {
+       const url = `${window.origin}${MarkdownFile[v]}`
+       const response =  await axios.get(url)
+       const res = response.data
+       arr.push(res)
+     }
+     setListHtml(arr)
   }
-  console.log(listHtml, "===ll====")
+
     return (
         <>
           <div className={styles.container}>
@@ -60,7 +51,7 @@ const Home = (props: any): React.ReactElement => {
 
                 <article>
                     <div className={styles.article}>
-                      {listHtml.map(v => <Article data={v} />)}
+                      {listHtml.map((v, index) => <Article data={v} key={index} />)}
 
                     </div>
                 </article>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useReducer, useState} from "react"
 import { Router } from "./routers"
 import { Avatar } from "./components/Avatar"
 import { Menu } from "./components/Menu"
@@ -9,120 +9,15 @@ import styles from "./App.less"
 import { ColorItemProps, MenuProps } from "./types"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {BasePath} from "./types/config";
+import store, {initialState, reducer} from "./layout/store";
+import {colorList} from "./utils/default";
 
 const App = () => {
+    const [state, dispatch] = useReducer(reducer, initialState)
     const [isShowAside, setIsShowAside] = useState<boolean>(false)
     const [menuItem, setMenuItem] = useState<MenuProps[]>([])
-    const [theme, setTheme] = useState<string>("green")
     const [colorItem, setColorItem] = useState<ColorItemProps[]>([])
     useEffect(() => {
-        const item: MenuProps[] = [
-            {
-                name: "首页",
-                active: false,
-                icon: solid("home"),
-                child: [],
-                href: "/",
-                id: 1
-            },
-
-            {
-                name: "布局",
-                active: true,
-                icon: solid("dice-three"),
-                isParent: true,
-                child: [
-                    {
-                        name: "flex",
-                        active: false,
-                        icon: solid("dice-three"),
-                        child: [],
-                        href: "/flex",
-                        id: 1
-                    },
-                    {
-                        name: "float",
-                        active: false,
-                        icon: solid("dice-three"),
-                        child: [],
-                        href: "/float",
-                        id: 2
-                    },
-                    {
-                        name: "grid",
-                        active: false,
-                        icon: solid("dice-three"),
-                        child: [],
-                        href: "/grid",
-                        id: 3
-                    }
-                ],
-                href: "",
-                id: 2
-            },
-            {
-                name: "css",
-                active: true,
-                isParent: true,
-                icon: solid("dice-three"),
-                child: [
-                    {
-                        name: "Cybr",
-                        active: false,
-                        icon: solid("dice-three"),
-                        child: [],
-                        href: "/cybr",
-                        id: 1
-                    }
-                ],
-                href: "",
-                id: 3
-            },
-            {
-                name: "Webgl",
-                active: true,
-                icon: solid("dice-three"),
-                child: [],
-                href: "/webgl",
-                id: 4
-            },
-            {
-                name: "Three",
-                active: true,
-                icon: solid("dice-three"),
-                isParent: true,
-                child: [
-                    {
-                        name: "boxWrap",
-                        active: true,
-                        icon: solid("dice-three"),
-                        child: [],
-                        href: "/boxWrap",
-                        id: 1
-                    }
-                ],
-                href: "",
-                id: 5
-            }
-        ]
-        const colorList: ColorItemProps[] = [
-            {
-                name: "red",
-                active: false
-            },
-            {
-                name: "green",
-                active: false
-            },
-            {
-                name: "blue",
-                active: false
-            },
-            {
-                name: "pink",
-                active: false
-            }
-        ]
         const name: string = localStorage.getItem("theme") || ""
         const data = colorList.map(v => {
             return {
@@ -130,10 +25,10 @@ const App = () => {
                 active: v.name === name
             }
         })
-        setMenuItem(item)
-        setColorItem(data)
 
-        setTheme(name)
+        setMenuItem(state.menuItem)
+        setColorItem(data)
+        dispatch({ type: "SET_THEME", value: name })
     }, [])
 
     const handleAside = () => {
@@ -153,15 +48,14 @@ const App = () => {
     }
 
     const themeClass = (name: string) => {
-        localStorage.setItem("theme", name)
         const data = colorItem.map(v => {
             return {
                 ...v,
                 active: v.name === name
             }
         })
+        dispatch({ type: "SET_THEME", value: name })
         setColorItem(data)
-        setTheme(name)
     }
 
     const onChangeTheme = (value: boolean) => {
@@ -171,6 +65,7 @@ const App = () => {
 
 
     return (
+      <store.Provider value={{state, dispatch}}>
         <div className={styles.App}>
             <BrowserRouter>
                 {isShowAside && (
@@ -185,13 +80,13 @@ const App = () => {
                             </div>
                         </div>
                         <Menu menuItem={menuItem} callback={handleAngleUp} />
-                        <ThemeItem callback={themeClass} theme={theme} colorItem={colorItem} />
+                        <ThemeItem callback={themeClass} theme={state.theme} colorItem={colorItem} />
                     </aside>
                 )}
                 <div className={styles.content} onClick={handleAside}>
                     {isShowAside && <div className={styles.mask} />}
                     <header>
-                        <div className={`${styles.headerBg} ${styles[theme]}`}>
+                        <div className={`${styles.headerBg} ${styles[state.theme]}`}>
                             <div className={styles.headerMenu}>
                                 <div className={styles.menu} onClick={() => onChangeTheme(true)}>
                                     <FontAwesomeIcon icon={solid("bars")} />
@@ -205,12 +100,13 @@ const App = () => {
                     </header>
                     <div className={styles.nav}>
                         <nav>
-                            <Router onChnageTheme={onChangeTheme} theme={theme} />
+                            <Router onChnageTheme={onChangeTheme} theme={state.theme} />
                         </nav>
                     </div>
                 </div>
             </BrowserRouter>
         </div>
+      </store.Provider>
     )
 }
 
