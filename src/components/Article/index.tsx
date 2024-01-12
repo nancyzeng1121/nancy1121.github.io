@@ -11,7 +11,7 @@ export const Article = (props: any) => {
   const navigate = useNavigate()
   const { dispatch } = useContext<any>(store)
   const handleClick = () => {
-    navigate("/blogContent")
+    navigate("/blogContent/" + data.name)
     dispatch({type: SET_BLOG, value: data})
 
   }

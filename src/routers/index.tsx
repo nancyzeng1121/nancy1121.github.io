@@ -24,7 +24,7 @@ export const Router = (props: any) => {
             <Route path={`${BasePath}/boxWrap`} element={<BoxWrap />} />
             <Route path={`${BasePath}/boxWrap`} element={<BoxWrap />} />
             <Route path={`${BasePath}/blog`} element={<BlogComponent />} />
-            <Route path={`${BasePath}/blogContent`} element={<BlogContent />} />
+            <Route path={`${BasePath}/blogContent/:name`} element={<BlogContent />} />
             <Route path={`${BasePath}/personal`} element={<Personal />} />
         </Routes>
     )
