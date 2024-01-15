@@ -1,37 +1,41 @@
 import styles from "./index.less"
-import React from "react"
-import { Link } from "react-router-dom"
-import { BasePath } from "../../types/config"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
+import React, {useContext} from "react"
+import { useNavigate } from "react-router-dom"
 import { MenuProps } from "../../types"
+import {SET_BLOG} from "../../layout/action";
+import store from "../../layout/store";
 
 export const Menu = (props: any) => {
-    const { menuItem, callback } = props
+    const { menuItem = [], callback } = props
+  const navigate = useNavigate()
+  const { dispatch } = useContext<any>(store)
+
+  const handleActive = (item: MenuProps) => {
+    callback && callback(item)
+  }
+
+  const handleToHref = ( item: any) => {
+    navigate(item.href)
+    if(item.html){dispatch({type: SET_BLOG, value: item})}
+
+  }
     const renderMenu = (item: MenuProps, isChild: boolean) => {
-        const handleActive = (item: MenuProps) => {
-            callback && callback(item)
-        }
         return (
             <div className={`${styles.menuWrap}`} key={item.id}>
-                <Link to={`${item.isParent ? "#" : BasePath + item.href}`} className={styles.link}>
+                <div className={styles.link}>
                     <div className={`${styles.menuItem} ${isChild ? styles.menuItemChild : ""}`}>
-                        <div className={styles.menu}>
-                            <FontAwesomeIcon icon={item.icon} />
+                        <div className={styles.menu} onClick={() => handleToHref(item)}>
+                            <span className={`icon iconfont ${item.icon}`}></span>
                             <span className={styles.menuName}>{item.name}</span>
                         </div>
-                        {item.child.length > 0 && (
-                            <FontAwesomeIcon
-                                icon={item.active ? faAngleUp : faAngleDown}
-                                className={`${styles.icon}  ${styles.faAngleUp}`}
-                                onClick={() => handleActive(item)}
-                            />
+                        {item.child && item.child.length > 0 && (
+                          <span className={`icon iconfont ${item.active ? 'icon-shouqi' : 'icon-xiala'}`} onClick={() => handleActive(item)}></span>
                         )}
                     </div>
-                </Link>
-                {item.active && item.child && item.child.map((v: MenuProps) => renderMenu(v, true))}
+                </div>
+                {item.active ? item.child.map((v: any) => renderMenu(v, true)) : null}
             </div>
         )
     }
-    return menuItem.map((v: MenuProps) => renderMenu(v, false))
+    return <>{menuItem.map((v: any) => renderMenu(v, false))}</>
 }

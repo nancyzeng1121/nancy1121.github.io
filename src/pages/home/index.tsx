@@ -1,30 +1,21 @@
 import React, {useEffect, useState} from "react"
 import styles from "./index.less"
 import {Article} from "../../components/Article"
-import axios from "axios";
-import MarkdownFile from "../../components/MarkdownFile";
 import {useNavigate} from "react-router-dom";
+import {getFile} from "../../utils";
 
 
 const Home = (props: any): React.ReactElement => {
     const navigate = useNavigate()
     const [listHtml, setListHtml] = useState([])
    useEffect(() => {
-
-
-     getFile()
+     getList()
 
    }, [])
 
-   const getFile = async () => {
-    const arr: any = []
-     for (const v of Object.keys(MarkdownFile)) {
-       const url = `${window.origin}${MarkdownFile[v]}`
-       const response =  await axios.get(url)
-       const res = response.data
-       arr.push(res)
-     }
-     setListHtml(arr)
+  const getList = async () => {
+    const arr = await getFile()
+    setListHtml(arr)
   }
 
     return (
@@ -33,7 +24,7 @@ const Home = (props: any): React.ReactElement => {
                 <section>
                     <div className={styles.commended} onClick={() => {navigate("/personal")} }>
                         <div className={styles.commendedArticle}>
-                            <Article/>
+                            <Article data={listHtml[0]} key={'commend'}/>
                         </div>
 
                         <div className={styles.avatar}>
