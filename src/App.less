@@ -1,24 +1,19 @@
 @import "assets/css/animation";
+@import "./assets/css/theme";
+
+
 a{
   color: inherit;
 }
 .headerBg{
+  background-color: @green-bg-color;
+  & when (@theme = red) {
+    background-color: @red-bg-color;
+  }
+  & when (@theme = blue) {
+    background-color: @blue-bg-color;
+  }
   height: 50px;
-  background: var(--green-bg-color);
-  &.red{
-    background: var(--red-bg-color);
-  }
-
-  &.blue{
-    background: var(--blue-bg-color);
-  }
-
-  &.green{
-    background: var(--green-bg-color);
-  }
-  &.pink{
-    background: var(--pink-bg-color);
-  }
   .headerMenu{
     position: fixed;
     top: 0;

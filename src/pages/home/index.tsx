@@ -22,12 +22,12 @@ const Home = (props: any): React.ReactElement => {
         <>
           <div className={styles.container} style={{marginTop: '10px'}}>
                 <section>
-                    <div className={styles.commended} onClick={() => {navigate("/personal")} }>
+                    <div className={styles.commended} >
                         <div className={styles.commendedArticle}>
                             <Article data={listHtml[0]} key={'commend'}/>
                         </div>
 
-                        <div className={styles.avatar}>
+                        <div className={styles.avatar} onClick={() => {navigate("/personal")}}>
                             <div className={`${styles.bg} ${styles.personal}`} />
                             <div className={styles.name}>个人介绍</div>
                         </div>

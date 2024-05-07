@@ -31,6 +31,25 @@ export const initialState: State = {
       icon: "icon-youji",
       child: [
         {
+          name: "效果",
+          active: true,
+          icon: "icon-youji",
+          id: 5,
+          child: [
+            {
+              name: "单元格拖拽",
+              active: true,
+              icon: "icon-youji",
+              child: [],
+              href: "/effect/drag",
+              id: 1,
+              parentId: 5,
+            }
+          ],
+          href: "",
+
+        },
+        {
           name: "布局",
           active: true,
           icon: "icon-youji",
@@ -112,6 +131,7 @@ export const initialState: State = {
           href: "",
 
         }
+
       ]
     }
   ],

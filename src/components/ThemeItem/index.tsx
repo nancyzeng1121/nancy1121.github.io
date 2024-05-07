@@ -1,6 +1,4 @@
 import React from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"
 import styles from "./index.less"
 import { ColorItemProps } from "../../types"
 export const ThemeItem = (props: any) => {
@@ -18,7 +16,7 @@ export const ThemeItem = (props: any) => {
                     onClick={() => handleTheme(v.name)}
                     key={index}
                 >
-                    <FontAwesomeIcon icon={solid("check")} />
+                    <span className={'icon iconfont icon-xiangqu'} />
                 </div>
             ))}
         </div>

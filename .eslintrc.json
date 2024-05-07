@@ -35,7 +35,8 @@
     "@typescript-eslint/no-use-before-define": 0,
     "@typescript-eslint/no-var-requires": 0,
     "comma-dangle": 0,
-    "quotes": [1, "double"]
+    "quotes": [1, "double"],
+    "prefer-const": "off"
   },
   "settings": {
     // ESLint 支持在配置文件添加共享设置。你可以添加 settings 对象到配置文件，它将提供给每一个将被执行的规则。

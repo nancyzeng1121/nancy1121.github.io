@@ -1,0 +1,36 @@
+@import "../../assets/css/theme";
+.wrp {
+  height: 100%;
+  width: 100%;
+  svg {
+    height: 100%;
+    width: 100%;
+
+    * {
+      transform-origin: center;
+      transform-box: fill-box;
+    }
+
+    .swet,
+    .debre,
+    .flash,
+    #paper1 {
+      opacity: 0;
+    }
+  }
+}
+.notFondWrap{
+  background-color: @green-bg-color;
+  & when (@theme = red) {
+    background-color: @red-bg-color;
+  }
+  & when (@theme = blue) {
+    background-color: @blue-bg-color;
+  }
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}

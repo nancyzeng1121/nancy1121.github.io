@@ -11,6 +11,8 @@ import BoxWrap from "../pages/BoxWrap"
 import BlogComponent from "../pages/blog";
 import BlogContent from "../pages/blog/BlogContent";
 import Personal from "../pages/personal";
+import NotFound from "../pages/NotFound";
+import DragSortingTable from "../pages/effect/Draggable";
 
 export const Router = (props: any) => {
     return (
@@ -26,6 +28,8 @@ export const Router = (props: any) => {
             <Route path={`${BasePath}/blog`} element={<BlogComponent />} />
             <Route path={`${BasePath}/blogContent/:name`} element={<BlogContent />} />
             <Route path={`${BasePath}/personal`} element={<Personal />} />
+            <Route path={`${BasePath}/effect/drag`} element={<DragSortingTable />} />
+            <Route path={'*'} element={<NotFound/>} />
         </Routes>
     )
 }

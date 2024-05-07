@@ -89,6 +89,9 @@ const App = () => {
                 active: v.name === name
             }
         })
+
+        document.body.classList.remove('theme-green', 'theme-blue');
+        document.body.classList.add(`theme-${name}`)
         dispatch({ type: "SET_THEME", value: name })
         setColorItem(data)
     }
@@ -97,10 +100,15 @@ const App = () => {
         setIsShowAside(value)
     }
 
+  const rootStyles = {
+    '--theme': `${state.theme === 'green' ? 'blue' : 'green'}`,
+
+  } as React.CSSProperties;
+
 
     return (
       <store.Provider value={{state, dispatch}}>
-        <div className={styles.App}>
+        <div className={styles.App} style={{...rootStyles}}>
             <BrowserRouter>
                 {isShowAside && (
                     <aside>
