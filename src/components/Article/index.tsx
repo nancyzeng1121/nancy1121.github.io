@@ -5,6 +5,7 @@ import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import store from "../../layout/store";
 import {SET_BLOG} from "../../layout/action";
+import {blogAuthName} from "../../utils";
 
 export const Article = (props: any) => {
   const {data} = props
@@ -32,7 +33,7 @@ export const Article = (props: any) => {
                     <Avatar />
                 </div>
 
-                <div className={styles.name}>なんでも</div>
+                <div className={styles.name}>{blogAuthName}</div>
             </div>
         </div>
     )

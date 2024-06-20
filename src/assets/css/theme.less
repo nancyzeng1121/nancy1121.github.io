@@ -1,9 +1,18 @@
 @import "./theme.green";
 @import "./theme.blue";
 @import "./theme.red";
+@import "./theme.pink";
 //// theme.less
 
-@theme: var(--theme);
+:root {
+  --red: @red-bg-color;
+  --blue: @blue-bg-color;
+  --green: @green-bg-color;
+  --pink: @pink-bg-color;
+  --theme: var(--red);
+}
+
+
 
 
 

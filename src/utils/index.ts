@@ -11,3 +11,6 @@ export  const getFile = async () => {
   }
   return arr
 }
+
+
+export const blogAuthName = 'なんでも'

@@ -9,7 +9,7 @@ import {ColorItemProps, MenuProps} from "./types"
 import {BasePath} from "./types/config";
 import store, {initialState, reducer} from "./layout/store";
 import {colorList} from "./utils/default";
-import {getFile} from "./utils";
+import {blogAuthName, getFile} from "./utils";
 
 const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -90,25 +90,25 @@ const App = () => {
             }
         })
 
-        document.body.classList.remove('theme-green', 'theme-blue');
-        document.body.classList.add(`theme-${name}`)
+        // document.body.classList.remove('theme-green', 'theme-blue');
+        // document.body.classList.add(`theme-${name}`)
         dispatch({ type: "SET_THEME", value: name })
         setColorItem(data)
     }
+
+    useEffect(() => {
+
+    }, [state.theme])
 
     const onChangeTheme = (value: boolean) => {
         setIsShowAside(value)
     }
 
-  const rootStyles = {
-    '--theme': `${state.theme === 'green' ? 'blue' : 'green'}`,
-
-  } as React.CSSProperties;
 
 
     return (
       <store.Provider value={{state, dispatch}}>
-        <div className={styles.App} style={{...rootStyles}}>
+        <div className={`${styles.App}`}>
             <BrowserRouter>
                 {isShowAside && (
                     <aside>
@@ -117,8 +117,8 @@ const App = () => {
                                 <Avatar />
                             </div>
                             <div>
-                                <div className={styles.asideName}>なんでも</div>
-                                <div className={styles.asideDesc}>なんでも</div>
+                                <div className={styles.asideName}>{blogAuthName}</div>
+                                <div className={styles.asideDesc}>{blogAuthName}</div>
                             </div>
                         </div>
                         <div className={styles.menuContainer}>

@@ -6,13 +6,8 @@ a{
   color: inherit;
 }
 .headerBg{
-  background-color: @green-bg-color;
-  & when (@theme = red) {
-    background-color: @red-bg-color;
-  }
-  & when (@theme = blue) {
-    background-color: @blue-bg-color;
-  }
+  background-color: var(--theme);
+
   height: 50px;
   .headerMenu{
     position: fixed;
@@ -111,6 +106,7 @@ aside{
     position: relative;
     height: calc(100% - 20px);
     overflow: hidden;
+    //background: var(--theme);
 
   }
 }

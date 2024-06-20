@@ -5,7 +5,9 @@ export const ThemeItem = (props: any) => {
     const { callback, colorItem } = props
 
     const handleTheme = (name: string) => {
-        callback(name)
+      document.documentElement.style.setProperty('--theme', `var(--${name})`);
+
+      callback(name)
     }
 
     return (
