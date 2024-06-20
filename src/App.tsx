@@ -121,7 +121,13 @@ const App = () => {
                                 <div className={styles.asideDesc}>なんでも</div>
                             </div>
                         </div>
-                        <Menu menuItem={menuItem} callback={handleAngleUp} />
+                        <div className={styles.menuContainer}>
+                          <div style={{height: '100%', overflow: 'auto'}}>
+                            <Menu menuItem={menuItem} callback={handleAngleUp} />
+
+                          </div>
+                        </div>
+
                         <ThemeItem callback={themeClass} theme={state.theme} colorItem={colorItem} />
                     </aside>
                 )}

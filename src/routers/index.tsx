@@ -13,6 +13,7 @@ import BlogContent from "../pages/blog/BlogContent";
 import Personal from "../pages/personal";
 import NotFound from "../pages/NotFound";
 import DragSortingTable from "../pages/effect/Draggable";
+import NatureAnalysis from "../pages/effect/natureAnalysis";
 
 export const Router = (props: any) => {
     return (
@@ -29,6 +30,7 @@ export const Router = (props: any) => {
             <Route path={`${BasePath}/blogContent/:name`} element={<BlogContent />} />
             <Route path={`${BasePath}/personal`} element={<Personal />} />
             <Route path={`${BasePath}/effect/drag`} element={<DragSortingTable />} />
+            <Route path={`${BasePath}/nature`} element={<NatureAnalysis />} />
             <Route path={'*'} element={<NotFound/>} />
         </Routes>
     )

@@ -44,7 +44,16 @@ export const initialState: State = {
               href: "/effect/drag",
               id: 1,
               parentId: 5,
-            }
+            },
+            {
+              name: "自然语言对比分析",
+              active: true,
+              icon: "icon-youji",
+              child: [],
+              href: "/nature",
+              id: 1,
+              parentId: 5,
+            },
           ],
           href: "",
 
